@@ -16,7 +16,7 @@ class fraccion{
      * Denominador de la fracción
      * @return void
      */
-    public function __constructor(int $numerador, int $denominador){
+    public function __construct(int $numerador, int $denominador){
         $this->setNumerador($numerador);
         $this->setDenominador($denominador);
     }
@@ -50,7 +50,7 @@ class fraccion{
         if($this->mismoDenominador($sumando)){
             return new fraccion($this->sumaNumerador($sumando), $this->getDenominador());
         }
-        return self::reducirResultado($reducirResultado,$this->sumaFraccioneDistintoDenominador());
+        return self::reducirResultado($reducirResultado,$this->sumaFraccioneDistintoDenominador($sumando));
     }
 
     /**
@@ -78,7 +78,7 @@ class fraccion{
         if($this->mismoDenominador($restando)){
             return new fraccion($this->restaNumerador($restando), $this->getDenominador());
         }
-        return self::reducirResultado($reducirResultado,$this->restaFraccioneDistintoDenominador());
+        return self::reducirResultado($reducirResultado,$this->restaFraccioneDistintoDenominador($restando));
     }
 
 
@@ -187,7 +187,7 @@ class fraccion{
      * @return int
      */
     private function restaNumerador(fraccion $restando):int{
-        return $this->getNumerador() + $restando->getNumerador();
+        return $this->getNumerador() - $restando->getNumerador();
     }
 
     /**
@@ -241,7 +241,7 @@ class fraccion{
      * @param fracion $fraccion
      * @return fracion 
      */
-    private static function reducirResultado(bool $reducir, fracion $fraccion):fracion{
+    private static function reducirResultado(bool $reducir, $fraccion){
         return $reducir?reducirFraccion($fraccion):$fraccion;
     }
 }
