@@ -5,14 +5,13 @@
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {
-        "psr-4": {
-            "ITEC\fraccion\\":"src/"
-        }
-
+        "files":[
+            "src/fraccion.php"
+        ]
     },
     "autoload-dev": {
-        "psr-4": {
-            "ITEC\fraccion\\":"src/"
-        }
+        "files":[
+            "src/fraccion.php"
+        ]
     }
 }
